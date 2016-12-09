@@ -1,0 +1,238 @@
+// JavaScript Document
+$(document).ready(function() {
+	//set all the sorts to false
+	var nameAccending=false;
+	var sortedByName=[];
+	var codeAccending=false;
+	var sortedByCode=[];
+	var priceAccending=false;
+	var sortedByPrice=[];
+	var locationAccending = false;
+	var sortedByLocation = [];
+	//sort all the things!!!
+	//#codeHeader
+	//var allItems = [];
+	$('#itemNameHeader').on("click", function() {
+		if (allItems === undefined) { //set allItems if it's not already set
+			var allItems = [];
+			var i = 0;
+			$('.itemContainer').each(function() {
+				var codeID = $(this).children('.itemCode').text();
+				var desc = $(this).children('.itemName').text();
+				var pri = $(this).children('.itemPrice').text();
+				var loc = $(this).children('.itemLoc').text();
+				allItems.push({
+					code: codeID,
+					description: desc,
+					price: pri,
+					location: loc
+				});
+				i++;
+			});
+		}
+		if (nameAccending === false){
+			sortedByName = allItems.sort(function(a, b) {
+				if (a.description.toLowerCase() < b.description.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return -1;
+				}
+				if (a.description.toLowerCase() > b.description.toLowerCase()) {
+					return 1;
+				}
+				return 0;
+			});
+			nameAccending=true;
+		}
+		else if (nameAccending === true){
+				sortedByName = allItems.sort(function(a, b) {
+				if (a.description.toLowerCase() < b.description.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return 1;
+				}
+				if (a.description.toLowerCase() > b.description.toLowerCase()) {
+					return -1;
+				}
+				return 0;
+			});
+			nameAccending=false;
+			}
+		
+		//then replace all the things
+		var htmlSortedByName = '';
+		for (i = 0; i < sortedByName.length; i++) {
+			htmlSortedByName = htmlSortedByName +
+				"<div class='itemContainer' id='container" + i +
+				"'><div class='itemCode' ID='code" + i + "'>" + sortedByName[i]['code'] +
+				"</div><div class='itemName' id='itemName" + i + "'>" + sortedByName[i]
+				['description'] + "</div><div class='itemPrice' id='price" + i + "'>" +
+				sortedByName[i]['price'] + "</div><div class='itemLoc' id='itemLoc" + i +
+				"'>" + sortedByName[i]['location'] + "</div></div>"; //make the string here of html to add
+		}
+		$('#allItems').html(htmlSortedByName);
+	}); //end on click of description
+	$('#codeHeader').on("click", function() {
+		if (allItems === undefined) { //set allItems if it's not already set
+			var allItems = [];
+			var i = 0;
+			$('.itemContainer').each(function() {
+				var codeID = $(this).children('.itemCode').text();
+				var desc = $(this).children('.itemName').text();
+				var pri = $(this).children('.itemPrice').text();
+				var loc = $(this).children('.itemLoc').text();
+				allItems.push({
+					code: codeID,
+					description: desc,
+					price: pri,
+					location: loc
+				});
+				i++;
+			});
+		}
+		if(codeAccending===false){
+			sortedByCode = allItems.sort(function(a, b) {
+				if (a.code.toLowerCase() < b.code.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return -1;
+				}
+				if (a.code.toLowerCase() > b.code.toLowerCase()) {
+					return 1;
+				}
+				return 0;
+			});
+			codeAccending=true;
+		}
+		else if (codeAccending===true){
+				sortedByCode = allItems.sort(function(a, b) {
+				if (a.code.toLowerCase() < b.code.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return 1;
+				}
+				if (a.code.toLowerCase() > b.code.toLowerCase()) {
+					return -1;
+				}
+				return 0;
+			});
+			codeAccending=false;
+		}
+		//then replace all the things
+		var htmlSortedByCode = '';
+		for (i = 0; i < sortedByCode.length; i++) {
+			htmlSortedByCode = htmlSortedByCode +
+				"<div class='itemContainer' id='container" + i +
+				"'><div class='itemCode' ID='code" + i + "'>" + sortedByCode[i]['code'] +
+				"</div><div class='itemName' id='itemName" + i + "'>" + sortedByCode[i]
+				['description'] + "</div><div class='itemPrice' id='price" + i + "'>" +
+				sortedByCode[i]['price'] + "</div><div class='itemLoc' id='itemLoc" + i +
+				"'>" + sortedByCode[i]['location'] + "</div></div>"; //make the string here of html to add
+		}
+		$('#allItems').html(htmlSortedByCode);
+	}); //end ON click code
+	$('#priceHeader').on("click", function() {
+		if (allItems === undefined) { //set allItems if it's not already set
+			var allItems = [];
+			var i = 0;
+			$('.itemContainer').each(function() {
+				var codeID = $(this).children('.itemCode').text();
+				var desc = $(this).children('.itemName').text();
+				var pri = $(this).children('.itemPrice').text();
+				var loc = $(this).children('.itemLoc').text();
+				allItems.push({
+					code: codeID,
+					description: desc,
+					price: pri,
+					location: loc
+				});
+				i++;
+			});
+		}
+		if(priceAccending===false){	
+			sortedByPrice = allItems.sort(function(a, b) {
+				if (parseFloat(a.price.slice(1)) < parseFloat(b.price.slice(1))) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return -1;
+				}
+				if (parseFloat(a.price.slice(1)) > parseFloat(b.price.slice(1))) {
+					return 1;
+				}
+				return 0;
+			});
+			priceAccending=true;
+		}
+		else if (priceAccending === true){
+			sortedByPrice = allItems.sort(function(a, b) {
+				if (parseFloat(a.price.slice(1)) < parseFloat(b.price.slice(1))) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return 1;
+				}
+				if (parseFloat(a.price.slice(1)) > parseFloat(b.price.slice(1))) {
+					return -1;
+				}
+				return 0;
+			});
+			priceAccending=false;
+		}
+		//then replace all the things
+		var htmlSortedByPrice = '';
+		for (i = 0; i < sortedByPrice.length; i++) {
+			htmlSortedByPrice = htmlSortedByPrice +
+				"<div class='itemContainer' id='container" + i +
+				"'><div class='itemCode' ID='code" + i + "'>" + sortedByPrice[i]['code'] +
+				"</div><div class='itemName' id='itemName" + i + "'>" + sortedByPrice[i]
+				['description'] + "</div><div class='itemPrice' id='price" + i + "'>" +
+				sortedByPrice[i]['price'] + "</div><div class='itemLoc' id='itemLoc" +
+				i + "'>" + sortedByPrice[i]['location'] + "</div></div>"; //make the string here of html to add
+		}
+		$('#allItems').html(htmlSortedByPrice);
+	}); //end ON click price 
+	$('#itemLocHeader').on("click", function() {
+		if (allItems === undefined) { //set allItems if it's not already set
+			var allItems = [];
+			var i = 0;
+			$('.itemContainer').each(function() {
+				var codeID = $(this).children('.itemCode').text();
+				var desc = $(this).children('.itemName').text();
+				var pri = $(this).children('.itemPrice').text();
+				var loc = $(this).children('.itemLoc').text();
+				allItems.push({
+					code: codeID,
+					description: desc,
+					price: pri,
+					location: loc
+				});
+				i++;
+			});
+		}
+		if(locationAccending===false){
+			sortedByLocation = allItems.sort(function(a, b) {
+				if (a.location.toLowerCase() < b.location.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return -1;
+				}
+				if (a.location.toLowerCase() > b.location.toLowerCase()) {
+					return 1;
+				}
+				return 0;
+			});
+			locationAccending=true;
+		}
+		else if (locationAccending===true){
+			sortedByLocation = allItems.sort(function(a, b) {
+				if (a.location.toLowerCase() < b.location.toLowerCase()) { //note: the toLowerCase() makes it ignore case in the sorting.
+					return 1;
+				}
+				if (a.location.toLowerCase() > b.location.toLowerCase()) {
+					return -1;
+				}
+				return 0;
+			});
+			locationAccending=false;
+		}
+		//then replace all the things
+		var htmlSortedByLocation = '';
+		for (i = 0; i < sortedByLocation.length; i++) {
+			htmlSortedByLocation = htmlSortedByLocation +
+				"<div class='itemContainer' id='container" + i +
+				"'><div class='itemCode' ID='code" + i + "'>" + sortedByLocation[i][
+					'code'
+				] + "</div><div class='itemName' id='itemName" + i + "'>" +
+				sortedByLocation[i]['description'] +
+				"</div><div class='itemPrice' id='price" + i + "'>" + sortedByLocation[
+					i]['price'] + "</div><div class='itemLoc' id='itemLoc" + i + "'>" +
+				sortedByLocation[i]['location'] + "</div></div>"; //make the string here of html to add
+		}
+		$('#allItems').html(htmlSortedByLocation);
+	}); //end ON click Location
+});

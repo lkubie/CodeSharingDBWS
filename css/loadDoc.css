@@ -1,0 +1,278 @@
+/* CSS Document */
+
+@font-face {
+	font-family: quicksand;
+	src: url(../Quicksand/Quicksand-Regular.ttf);
+}
+body {
+	font-family: quicksand;
+	background-color: #333333;
+	color: #d1d1d1; /*light grey*/
+}
+#chatSubmit {
+	font-size:0.8em;
+	float: left;
+	background-color: #333333;
+	border-style: solid;
+	border-width: medium;
+	border-color: #d1d1d1;/*light grey*/
+	color: #d1d1d1;/*light grey*/
+	width: 15%;
+	cursor: pointer;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 5%;
+	text-align: center;
+	margin-top: 25px;
+}
+#currentUsersTitle {
+	text-decoration: underline;
+	font-weight: bold;
+}
+#chatText {
+	height: 250px;
+	overflow-y: scroll;
+	background-color: #d1d1d1; /*light grey*/
+	color: #333333;
+	font-size: 0.7em;
+	padding: 5px;
+}
+#chatTextInput {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	font-size: 0.9em;
+	float: left;
+	width: 75%;
+	cursor: text;
+	height: 50px;
+	background-color: #d1d1d1; /*light grey*/
+	color: #333333;
+	margin-top: 5px;
+	padding: 1%;
+}
+#chatTextInput:focus {
+	outline: 0px solid transparent;
+}
+#overlay {
+	display: block;
+	z-index: 2;
+	background: #333333;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+}
+#nameNote {
+	font-size: 0.6em;
+}
+#enterName {
+	line-height: 2em;
+	padding: 2%;
+	display: block;
+	position: relative;
+	z-index: 3;
+	margin: 150px auto 0px auto;
+	width: 500px;
+	background: #333333;
+	color: #d1d1d1;
+	border-style: solid;
+	border-color: #ead94c;
+}
+#enterName input text {
+	display: inline-block;
+	font-size: 22px;
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	vertical-align: top;
+	Height: 68px;
+	width: 64%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin: 0;
+	color: #333333;
+	background-color: #d1d1d1;/*light gray*/
+	box-sizing: content-box;
+}
+#userNameInput:focus {
+	outline: 0px solid transparent;
+}
+#submitName {
+	cursor: pointer;
+	font-size: 22px;
+	font-family: quicksand;
+	display: inline-block;
+	width: 28%;
+	border: none;
+	background: none;
+	height: 70px;
+	color: #d1d1d1;
+	padding: 0px;
+	margin: 0;
+	margin-left: 5px;
+	text-align: center;
+	background-color: #00a9bc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#submitName:focus {
+	outline: 0px solid transparent;
+}
+#userNameInput {
+	display: inline-block;
+	font-size: 22px;
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	vertical-align: top;
+	Height: 68px;
+	width: 64%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin: 0;
+	color: #333333;
+	background-color: #d1d1d1;/*light gray*/
+	box-sizing: content-box;
+}
+#bottomOfNameInput {
+	padding-top: 20px;
+}
+#wrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding-left: 24px;
+	width: 100%;
+}
+#usersName{
+	display:inline-block;
+	}
+#editName {
+	padding-left:20px;
+	display:inline-block;
+	font-size:0.7em;
+	text-decoration: underline;
+	cursor: pointer;
+}
+select {
+	font-family: quicksand;
+	color:#d1d1d1;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	padding-left: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-color: #00a9bc;
+	background: url(http://localhost/codesharingDBWS/img/dropdown-mod.png) no-repeat 100% 0;
+	background-color: #00a9bc;
+	height: 25px;
+	overflow: hidden;
+	width: 120px;
+}
+select:focus {
+	outline: 0px solid transparent;
+}
+#welcomeContainer {
+	border-bottom-style: solid;
+	border-color:#ead94c;
+	padding: 2%;
+}
+#welcomeFile {
+	float: left;
+	font-size: 18pt;
+}
+#instructions {
+	clear: both;
+}
+#bottomOfPage {
+	
+	padding: 0% 2% 2% 2%;
+}
+#title{
+	float:left;
+	width:25%;
+	font-size: 2em;
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+}
+#copied {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	float: right;
+	color: #dd7373;
+	font-size: 0.9em;
+	padding: 5px;
+	margin-left: 20px;
+	display: none;
+}
+#fileNameSpan {
+	text-decoration: underline;
+	cursor: pointer;
+}
+#status {
+	float: left;
+	padding: 20px;
+}
+#language {
+	float: left;
+	padding: 20px;
+}
+#coloring {
+	float: left;
+	padding: 20px;
+}
+#mainContainer {
+	clear: both;
+}
+#currentCodeBox {
+	width:60%;
+	display: inline-block;
+	
+}
+#showChat{
+	cursor:pointer;
+	width:10%;
+	float:right;
+	display:none;}
+#sidebar {
+	border: 5px solid #ead94c;
+	padding: 1% 1%;
+	width: 30%;
+	float: right;
+	margin-left: 3%;
+	position:relative;
+}#hideChat{
+	cursor:pointer;
+	position:absolute;
+	right:15px;
+	top:15px;}
+#currentUserList {
+	margin-bottom: 50px;
+}
+#theCode {
+	overflow:scroll;
+	/*width: 130ch;*/
+	/*display: inline;*/
+	tab-size: 4;
+	margin: 0;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+#theCodeCode:focus {
+	outline: 0px solid transparent;
+}
+#theCodeCode {
+	outline: 0px solid transparent;
+	display: block;
+}

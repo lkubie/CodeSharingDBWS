@@ -1,0 +1,143 @@
+/* CSS Document */
+body {
+	box-sizing:border-box;
+}
+
+
+.twoColumns{
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+	column-count:2;
+	-webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+	 text-align: justify;
+    text-justify: inter-word;
+	
+	
+	}
+
+.main {
+	margin: 0 auto;
+	color: #d1d1d1;
+	width: 80%;
+}
+
+#welcome {
+	clear:both;
+	text-align: center;
+	padding:2% 2% 4% 2%;
+	font-size: 2em;
+}
+#welcome span {
+	font-weight: bold;
+}
+#leftContainer {
+	padding:2%;
+	margin-top:5%;
+	width: 65%;
+	float: left;
+}
+#filetypes {
+	float:right;
+	width:30%;
+	padding: 1% 1%;
+	margin-right:15px;
+	background: #ead94c;
+	color:#333333;
+
+}
+#listTop {
+	text-decoration: underline;
+	font-size: 1.1em;
+	width: 100%;
+	font-weight: bold;
+}
+#filetypes ul {
+
+	list-style-type: none;
+}
+#filetypes ul li {
+	font-size: 0.9em;
+	text-decoration: none;
+}
+#footer {
+	clear: both;
+	text-align: center;
+	padding: 5%;
+	margin-top: 50px;
+}
+
+
+#exampleScreenShot{
+	border-style:solid;
+	border-width:medium;
+	border-color:#ead94c;
+	width:60%;
+	}
+	/*.container img {
+   width: 100%;
+}*/
+
+
+
+#fileNameText {
+	display: inline-block;
+	font-size: 22px;
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	vertical-align: top;
+	Height: 30px;
+	width: 64%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin: 0;
+	color: #333333;
+	background-color: #d1d1d1;/*light gray*/
+	box-sizing: content-box;
+}
+#fileNameText:focus {
+	outline: 0px solid transparent;
+}
+#indexSubmit {
+	cursor: pointer;
+	font-family: quicksand;
+	display: inline-block;
+	width: 28%;
+	border: none;
+	background: none;
+	height: 30px;
+	color: #d1d1d1;
+	font-size: 14px;
+	padding: 0px;
+	margin: 0;
+	text-align: center;
+	background-color: #00a9bc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#indexSubmit:focus {
+	outline: 0px solid transparent;
+}
+#notice {
+	font-size: 10px;
+}
+#whatIsText{
+	text-align: justify;
+    text-justify: inter-word;
+	width:60%;
+	padding:0px 0px 20px 0px;}
+
+.sectionTitle{
+	display:inline-block;
+	margin-bottom:20px;
+	font-size:2em;
+	font-weight:bold;
+	}
+.indexSection{
+	padding-top:70px;
+	border-bottom: 5px solid #ead94c;
+	padding-bottom:30px;}

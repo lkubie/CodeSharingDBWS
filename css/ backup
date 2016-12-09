@@ -1,0 +1,105 @@
+/* CSS Document */
+.main {
+	color: #FFFFFF;
+	width:80%;
+	margin: 0 auto;
+}
+#welcome{
+	text-align:center;
+padding:5%;
+font-size:2em;
+}
+#welcome span{
+	font-weight:bold;
+	}
+#leftContainer {
+	padding:5%;
+	width:55%;
+	float: left;
+}
+#filetypes {
+	margin-top:5%;
+	width:20%;
+	padding:5%;
+	float: left;
+	border-style:solid;
+	border-color:#b9314f;
+	border-top-width:medium;
+	border-bottom-width:medium;
+}
+#listTop{
+	text-decoration:underline;
+	font-size:1.1em;
+	}
+#filetypes ul{
+	list-style-type:none;
+	}
+#filetypes ul li{
+	font-size:0.9em;
+	text-decoration:none;}
+#footer {
+	clear: both;
+	text-align:center;
+	padding:5%;
+	margin-top:50px;
+}
+#createNew {
+	color: #FFFFFF;
+	height: 70px;
+	line-height: 70px;
+	background-color:#f4ac45;
+	width: 75%;
+	text-align: center;
+	cursor: pointer;
+	border-color:#FFFFFF;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#meetSomeone {
+	margin-top: 50px;
+	width:75%;
+}
+#loadDocForm{
+	margin-top:5%;}
+#error{
+	clear:both;
+	color:#b9314f;
+	}
+#fileNameText {
+	display:inline-block;
+	font-size:22px;
+	border:none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	vertical-align:top;
+	Height: 68px;
+	width: 64%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin:0;
+	color:#333333;
+	background-color:#FFFFFF;
+	box-sizing:content-box;
+
+}
+#indexSubmit {
+	display:inline-block;
+	width:28%;
+	border: none;
+	background: none;
+	height:70px;
+	color:#FFFFFF;
+	font-size: 14px;
+	padding: 0px;
+	margin:0;
+	text-align: center;
+	background-color: #f4ac45;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#notice{
+	font-size:10px;
+	}

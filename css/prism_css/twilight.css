@@ -1,0 +1,272 @@
+/* http://prismjs.com/download.html?themes=prism-twilight&languages=markup+css+clike+javascript */
+/**
+ * prism.js Twilight theme
+ * Based (more or less) on the Twilight theme originally of Textmate fame.
+ * @author Remy Bach
+ 
+ Dark Gray: #333333
+  	Tones: #262626	#211111	#999999
+ Light Gray: #d1d1d1
+ 	Tones: #A8A8A8	#7E7E7E	#6D3655	#D3D3D3
+ ___________________________
+ Yellow: #ead94c
+ 	Tones of Yellow: #B0A657	#988A19	#F4E779	#F4EB9A
+Anologic to Yellow:
+	Lime Green: #CEE34A	
+		Tones: #9FAB54	#839418	#E0F177	#E5F198
+	Wheat Yellow: #EAC04C	
+		Tones: #B09857	#987619	#F4D479	#F4DC9A
+ ___________________________
+ Blue: #00a9bc
+ 	Tones of Blue: #23848D	#00707A	#37CFDE	#64D3DE
+ Anologic to Blue:
+ 	Bright blue: #0035C7 
+		Tones: #23848D	#00707A	#37CFDE	#64D3DE
+ 	Bright Green: #00D91B
+		Tones: #29A238	#008D11	#3BEC51	#6AEC7A
+ ___________________________
+ Pink: #dd7373
+ 	Tones of Pink: #A66A6A	#902525	#EE9898	#EEAFAF
+ Anologic to Pink:
+ 	Tan: #DDA373	
+		Tones: #A6856A #905625	#EEBF98	#EECCAF
+	Purple: #B15C8C	
+		Tones: #855570	#731E4E	#D88AB6	#D89FBF
+ 
+ 
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #D3D3D3;
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	text-shadow: 0 -.1em .2em 211111;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"],
+:not(pre) > code[class*="language-"] {
+	background: #211111;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	border-radius: .5em;
+	border: .3em solid #d1d1d1;
+	box-shadow: 1px 1px .5em #211111 inset;
+	margin: .5em 0;
+	overflow: auto;
+	padding: 1em;
+}
+
+pre[class*="language-"]::-moz-selection {
+	/* Firefox */
+	background: #211111;
+}
+
+pre[class*="language-"]::selection {
+	/* Safari */
+	background: #211111;
+}
+
+/* Text Selection colour */
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: hsla(0, 0%, 93%, 0.15); /* #EDEDED */
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: hsla(0, 0%, 93%, 0.15); /* #EDEDED */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	border-radius: .3em;
+	border: .13em solid hsl(0, 0%, 33%); /* #545454 */
+	box-shadow: 1px 1px .3em -.1em black inset;
+	padding: .15em .2em .05em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #d1d1d1;
+}
+
+.token.punctuation {
+	opacity: .7;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.tag,
+.token.boolean,
+.token.number,
+.token.deleted {
+	color: #905625;
+}
+
+.token.keyword,
+.token.property,
+.token.selector,
+.token.constant,
+.token.symbol,
+.token.builtin {
+	color: #B0A657;
+}
+
+.token.attr-name,
+.token.attr-value,
+.token.string,
+.token.char,
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable,
+.token.inserted {
+	color: #9FAB54;
+}
+
+.token.atrule {
+	color: #64D3DE;
+}
+
+.token.regex,
+.token.important {
+	color: hsl(42, 75%, 65%); /* #E9C062 */
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+pre[data-line] {
+	padding: 1em 0 1em 3em;
+	position: relative;
+}
+
+/* Markup */
+.language-markup .token.tag,
+.language-markup .token.attr-name,
+.language-markup .token.punctuation {
+	color: #EAC04C;
+}
+
+/* Make the tokens sit above the line highlight so the colours don't look faded. */
+.token {
+	position: relative;
+	z-index: 1;
+}
+
+.line-highlight {
+	background: hsla(0, 0%, 33%, 0.25); /* #545454 */
+	background: linear-gradient(to right, hsla(0, 0%, 33%, .1) 70%, hsla(0, 0%, 33%, 0)); /* #545454 */
+	border-bottom: 1px dashed hsl(0, 0%, 33%); /* #545454 */
+	border-top: 1px dashed hsl(0, 0%, 33%); /* #545454 */
+	left: 0;
+	line-height: inherit;
+	margin-top: 0.75em; /* Same as .prism’s padding-top */
+	padding: inherit 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	white-space: pre;
+	z-index: 0;
+}
+
+.line-highlight:before,
+.line-highlight[data-end]:after {
+	background-color: hsl(215, 15%, 59%); /* #8794A6 */
+	border-radius: 999px;
+	box-shadow: 0 1px white;
+	color: #D3D3D3;
+	content: attr(data-start);
+	font: bold 65%/1.5 sans-serif;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	position: absolute;
+	text-align: center;
+	text-shadow: none;
+	top: .4em;
+	vertical-align: .3em;
+}
+
+.line-highlight[data-end]:after {
+	bottom: .4em;
+	content: attr(data-end);
+	top: auto;
+}
+
+/*from default */
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #d1d1d1;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #d1d1d1;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
