@@ -24,9 +24,9 @@ if (!$connection) {
 
 $sql = "UPDATE `lrqf9g5qj2a9xm0i`.`users` SET `color`='".$color."' WHERE `userID`='".$user."';";
 $result = mysqli_query($connection, $sql);
-$row_cnt = mysqli_num_rows($result);
+//$row_cnt = mysqli_num_rows($result);
 $exists = 'false';
-if($row_cnt==0){
+if($result){
 
 	$exists = 'false';
 	}
@@ -36,8 +36,7 @@ else{
 
 
 
-mysqli_close($link);
+mysqli_close($connection);
 ?>
 <div id='exists'><?php echo($exists); ?>
 </div>
-<div id='text'><?php echo($text); ?></div>

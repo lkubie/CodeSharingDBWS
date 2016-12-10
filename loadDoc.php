@@ -26,18 +26,10 @@
 <script src="clipboard.js-master/dist/clipboard.min.js"></script>
 <script src="https://use.fontawesome.com/93ecf91868.js"></script>
 <script src="carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
-<!--<script src="jquery.caret-master/dist/jquery.caret-1.5.2.min.js"></script> -->
+<script src="js/cookies.js"></script>
 <script src="js/websocketScripts.js"></script>
 <script src="js/hideChat.js"></script>
- <!-- Load local QUnit. -->
 
-<!--<script src="jquery.caret-master/libs/qunit/pavlov.js"></script>-->
-
-        <!-- Load local Caret library. 
-      
-<script src="jquery.caret-master/src/jquery.caret.js"></script>
-
-        <script src="jquery.caret-master/libs/console-shim.js"></script><script src="jquery.caret-master/libs/es5-shim.js"></script><script src="jquery.caret-master/libs/json2.js"></script>-->
      
 
 <?php 
@@ -64,6 +56,8 @@ if (!$connection) {
 $sql = "SELECT * FROM lrqf9g5qj2a9xm0i.currentFiles WHERE filename = '".$file."'";
 $result = mysqli_query($connection, $sql);
 if($result){
+	//error_log("got a result!");
+
 	while($row = mysqli_fetch_assoc($result)){
 		$text = $row['text'];
 		$users = $row['currentUsers'];
@@ -73,7 +67,8 @@ if($result){
 		}
 	}
 //OVERRIDE COLOR AND SYNTAX IF USER HAS COOKIE!
-if($_COOKIE['user'.$file] != 'undefined'){
+
+if(isset($_COOKIE['user'.$file])){
 	$fullUserName = $_COOKIE['user'.$file];
 	$userPrefQuery = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE userID = '".$fullUserName."'";
 	$userResult = mysqli_query($connection, $userPrefQuery);
@@ -91,10 +86,10 @@ $loggedInUsers = mysqli_query($connection, $findAllLoggedInUsers);
 $loggedInUserHTML='';
 if($loggedInUsers){
 	while($row = mysqli_fetch_assoc($loggedInUsers)){
-		error_log($row['userID']);
+		//error_log($row['userID']);
 		$loggedInUserName = str_replace($file, "", $row['userID']);
 		$loggedInUserHTML=$loggedInUserHTML . '<br> '. $loggedInUserName;
-		error_log($loggedInUserHTML);
+		//error_log($loggedInUserHTML);
 		}
 	}
 
@@ -183,6 +178,7 @@ Enter your code here:</span>
 
 <div id="coloring">
 <?php 
+//error_log("The selected Color is (line 186):" . $color);
 $colorArray = array("default"=>"Default", "coy"=>"Coy", "dark"=>"Dark", "funky"=>"Funky", "light"=>"Light", "okaidia"=>"Okaidia", "twilight"=>"Twilight");
 echo("Color options: <select id='theme'>");
 foreach($colorArray as $name => $displayName) {

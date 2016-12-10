@@ -26,7 +26,7 @@ $exists = '';
 if($row_cnt==0){
 	$exists = 'false';
 	$insertQuery = "INSERT INTO lrqf9g5qj2a9xm0i.users (`userID`, `cookie`, `loggedIn`, color)  VALUES ('".$name."','".$cookie."','TRUE', NULL)";
-	error_log($insertQuery);
+	//error_log($insertQuery);
 	$resultInsert = mysqli_query($connection, $insertQuery);
 	}
 else{

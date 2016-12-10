@@ -22,9 +22,9 @@ if (!$connection) {
 
 $sql = "UPDATE `lrqf9g5qj2a9xm0i`.`currentFiles` SET `syntax`='".$syntax."' WHERE `fileName`='".$file."';";
 $result = mysqli_query($connection, $sql);
-$row_cnt = mysqli_num_rows($result);
+//$row_cnt = mysqli_num_rows($result);
 $exists = 'false';
-if($row_cnt==0){
+if($result){
 
 	$exists = 'false';
 	}
@@ -35,8 +35,7 @@ else{
 
 
 
-mysqli_close($link);
+mysqli_close($connection);
 ?>
 <div id='exists'><?php echo($exists); ?>
 </div>
-<div id='text'><?php echo("file is: " . $file . " and syntax is: " . $syntax); ?></div>

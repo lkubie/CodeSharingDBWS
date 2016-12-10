@@ -41,8 +41,7 @@ if($result){
 
 
 
-mysqli_close($link);
+mysqli_close($connection);
 ?>
 <div id='exists'><?php echo($exists); ?>
 </div>
-<div id='text'><?php echo($text); ?></div>
