@@ -9,7 +9,12 @@ else{
 	$user = 'test3';
 	$color = 'default';
 	}
- $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
+ $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$dbuser = "k22qr254pzknzhib";
+$dbpass = "rwzwygqrxexbnl6x";
+$dbname = "lrqf9g5qj2a9xm0i";
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, 3306);
+// $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
 if (!$connection) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
@@ -17,7 +22,7 @@ if (!$connection) {
     exit;
 }
 
-$sql = "UPDATE `CodeSharing`.`users` SET `color`='".$color."' WHERE `userID`='".$user."';";
+$sql = "UPDATE `lrqf9g5qj2a9xm0i`.`users` SET `color`='".$color."' WHERE `userID`='".$user."';";
 $result = mysqli_query($connection, $sql);
 $row_cnt = mysqli_num_rows($result);
 $exists = 'false';

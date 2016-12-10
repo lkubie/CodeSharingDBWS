@@ -48,7 +48,12 @@ if (isset($_GET['file'])){
 else{
 	$file = 'test';
 	}
- $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
+ $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$dbuser = "k22qr254pzknzhib";
+$dbpass = "rwzwygqrxexbnl6x";
+$dbname = "lrqf9g5qj2a9xm0i";
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, 3306);
+// $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
 if (!$connection) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
@@ -56,7 +61,7 @@ if (!$connection) {
     exit;
 }
 
-$sql = "SELECT * FROM CodeSharing.currentFiles WHERE filename = '".$file."'";
+$sql = "SELECT * FROM lrqf9g5qj2a9xm0i.currentFiles WHERE filename = '".$file."'";
 $result = mysqli_query($connection, $sql);
 if($result){
 	while($row = mysqli_fetch_assoc($result)){
@@ -70,7 +75,7 @@ if($result){
 //OVERRIDE COLOR AND SYNTAX IF USER HAS COOKIE!
 if($_COOKIE['user'.$file] != 'undefined'){
 	$fullUserName = $_COOKIE['user'.$file];
-	$userPrefQuery = "SELECT * FROM CodeSharing.users WHERE userID = '".$fullUserName."'";
+	$userPrefQuery = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE userID = '".$fullUserName."'";
 	$userResult = mysqli_query($connection, $userPrefQuery);
 	if($userResult){
 	while($row = mysqli_fetch_assoc($userResult)){
@@ -81,7 +86,7 @@ if($_COOKIE['user'.$file] != 'undefined'){
 }
 
 
-$findAllLoggedInUsers = "SELECT * FROM CodeSharing.users WHERE `userID` LIKE '" . $file . "%' AND `loggedIn` = 'TRUE'";
+$findAllLoggedInUsers = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE `userID` LIKE '" . $file . "%' AND `loggedIn` = 'TRUE'";
 $loggedInUsers = mysqli_query($connection, $findAllLoggedInUsers);
 $loggedInUserHTML='';
 if($loggedInUsers){
@@ -94,7 +99,7 @@ if($loggedInUsers){
 	}
 
 
-$findUsers = "SELECT * FROM CodeSharing.users WHERE `userID` LIKE '".$file."Anonymous%'";
+$findUsers = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE `userID` LIKE '".$file."Anonymous%'";
 $userAnons = mysqli_query($connection, $findUsers);
 $testArray = $userAnons;
 if($userAnons){
