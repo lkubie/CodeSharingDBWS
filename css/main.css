@@ -61,6 +61,49 @@ ul, li {
 	margin-left: -4px;
 	text-align: right;
 }
+#indexSubmit {
+	cursor: pointer;
+	font-family: quicksand;
+	display: inline-block;
+	width: 28%;
+	border: none;
+	background: none;
+	height: 30px;
+	color: #d1d1d1;
+	font-size: 14px;
+	padding: 0px;
+	margin: 0;
+	text-align: center;
+	background-color: #00a9bc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+#indexSubmit:focus {
+	outline: 0px solid transparent;
+}
+
+#fileNameText {
+	display: inline-block;
+	font-size: 22px;
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	vertical-align: top;
+	Height: 30px;
+	width: 64%;
+	padding-left: 2%;
+	padding-right: 2%;
+	margin: 0;
+	color: #333333;
+	background-color: #d1d1d1;/*light gray*/
+	box-sizing: content-box;
+}
+#fileNameText:focus {
+	outline: 0px solid transparent;
+}
+
 #logo{
 	font-size: 2em;
 	font-weight: bold;

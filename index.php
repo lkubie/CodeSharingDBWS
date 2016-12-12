@@ -6,7 +6,7 @@
                 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="img/CC.ico">
 <meta http-equiv="Content-Type" charset="UTF-8" content="text/html" />
 <title>Welcome to CollaborCode</title>
 <script src="js/jquery.js"></script>

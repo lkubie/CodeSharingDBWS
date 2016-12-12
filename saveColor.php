@@ -9,19 +9,19 @@ else{
 	$file = 'test3';
 	$color = 'default';
 	}
-//AWS for Heroku
+/*//AWS for Heroku
 $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbuser = "k22qr254pzknzhib";
 $dbpass = "rwzwygqrxexbnl6x";
 $dbname = "lrqf9g5qj2a9xm0i";
 $port = 3306;
-/*
+*/
 //Localhost
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
 $dbname = "CodeSharing";
-$port = 3308;*/
+$port = 3308;
 
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 // $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
