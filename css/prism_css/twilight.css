@@ -65,7 +65,7 @@ pre[class*="language-"],
 
 /* Code blocks */
 pre[class*="language-"] {
-	border-radius: .5em;
+	/*border-radius: .5em;*/
 	border: .3em solid #d1d1d1;
 	box-shadow: 1px 1px .5em #211111 inset;
 	margin: .5em 0;

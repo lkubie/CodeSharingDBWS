@@ -13,11 +13,11 @@ $(document).ready(function() {
 			//range.deleteContents();
 			var updatedContent = '';
 			selNode = range.startContainer; //this is grabbing the wrong thing after one iteration
-			console.log(selNode);
+			//console.log(selNode);
 			caretOffset = range.startOffset;//set the current offset
 			}
 			if(selNode == null){
-				console.log('selNode is null');
+				//console.log('selNode is null');
 			}
 			$.get("getCode.php", {file: fileName}, function(data){
 				updatedContent = data;
@@ -30,11 +30,11 @@ $(document).ready(function() {
 			else{
 				range.setStart(selNode, caretOffset);
 				range.collapse(true);
-				console.log(range);
+				//console.log(range);
 				sel.removeAllRanges();
 				sel.addRange(range);
-				console.log('result range:');
-				console.log(range);
+				//console.log('result range:');
+				//console.log(range);
 				}
 				//console.log(range);
 		}

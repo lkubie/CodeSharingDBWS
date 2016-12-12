@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var fileName = $('#fileNameSpan').text();
 	function saveChanges() {
 			if (changes) {
-				$('#status').html('Status: Saving...');
+				$('#status').html('Status: <span class="notReady">saving...</span>');
 				//get the data to save
 				content = $("#theCode").text();
 				if (content.match(/^[\r\n]/)) { //if it starts with a weird line break then replace it.
@@ -21,12 +21,12 @@ $(document).ready(function() {
 				$.post("saveCode.php", {file:fileName, text: newText}, function(data){
 					//console.log(data);
 					});
-				$('#status').html('Status: ready');
+				$('#status').html('Status: <span class="ready">ready</span>');
 				changes = false;
 			}
 		} //end saveChangesFunction
 	$("#currentCodeBox").on('input', function() {
-		$('#status').html('Status: Saving...');
+		$('#status').html('Status: <span class="notReady">saving...</span>');
 		changes = true;
 	});
 	setInterval(saveChanges, 2000);

@@ -38,7 +38,7 @@
 	<div style = "clear:both"></div>
 </div>
 
-
+<div id='noMobileOverlay'><u>Sorry!</u> <br>We do not currently support mobile devices. <br>If you're not on a mobile device, then make your browser larger, silly!</div>
 
 <div class="main">
 <div id="topSpacer"></div>
@@ -112,6 +112,6 @@ More and more we complacently sign away our rights in order to use a service. Co
 </div>
 <div id='footer'>Footer info | &copy; L. Kubie</div>
 </body>
-
+<script src="js/resizePage.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </html>

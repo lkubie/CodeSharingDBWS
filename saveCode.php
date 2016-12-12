@@ -9,11 +9,21 @@ else{
 	$file = 'test3';
 	$text = 'default';
 	}
- $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+//AWS for Heroku
+$dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbuser = "k22qr254pzknzhib";
 $dbpass = "rwzwygqrxexbnl6x";
 $dbname = "lrqf9g5qj2a9xm0i";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, 3306);
+$port = 3306;
+/*
+//Localhost
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "root";
+$dbname = "CodeSharing";
+$port = 3308;*/
+
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 // $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
 if (!$connection) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -22,7 +32,7 @@ if (!$connection) {
     exit;
 }
 $escapedText = mysqli_real_escape_string ( $connection , $text );
-$sql = "UPDATE `lrqf9g5qj2a9xm0i`.`currentFiles` SET `text`='".$escapedText."' WHERE `fileName`='".$file."';";
+$sql = "UPDATE `".$dbname."`.`currentFiles` SET `text`='".$escapedText."' WHERE `fileName`='".$file."';";
 $result = mysqli_query($connection, $sql);
 $row_cnt = mysqli_num_rows($result);
 $exists = 'false';

@@ -17,16 +17,13 @@
 <link href="css/loadDoc.css" media="screen" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/prism_css/default.css">
 
-<link rel="stylesheet" type="text/css" href="jquery.caret-master/libs/qunit/qunit.css">
-
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<script src="js/save.js"></script>
-<script src="clipboard.js-master/dist/clipboard.min.js"></script>
-<script src="https://use.fontawesome.com/93ecf91868.js"></script>
 <script src="carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
-<script src="js/cookies.js"></script>
+<script src="js/save.js"></script>
+<script src="js/clipboard.js-master/dist/clipboard.min.js"></script>
+<script src="https://use.fontawesome.com/93ecf91868.js"></script>
 <script src="js/websocketScripts.js"></script>
 <script src="js/hideChat.js"></script>
 
@@ -40,11 +37,21 @@ if (isset($_GET['file'])){
 else{
 	$file = 'test';
 	}
- $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+//AWS for Heroku
+$dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbuser = "k22qr254pzknzhib";
 $dbpass = "rwzwygqrxexbnl6x";
 $dbname = "lrqf9g5qj2a9xm0i";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, 3306);
+$port = 3306;
+/*
+//Localhost
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "root";
+$dbname = "CodeSharing";
+$port = 3308;*/
+
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 // $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
 if (!$connection) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -53,11 +60,9 @@ if (!$connection) {
     exit;
 }
 
-$sql = "SELECT * FROM lrqf9g5qj2a9xm0i.currentFiles WHERE filename = '".$file."'";
+$sql = "SELECT * FROM ".$dbname.".currentFiles WHERE filename = '".$file."'";
 $result = mysqli_query($connection, $sql);
 if($result){
-	//error_log("got a result!");
-
 	while($row = mysqli_fetch_assoc($result)){
 		$text = $row['text'];
 		$users = $row['currentUsers'];
@@ -70,7 +75,7 @@ if($result){
 
 if(isset($_COOKIE['user'.$file])){
 	$fullUserName = $_COOKIE['user'.$file];
-	$userPrefQuery = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE userID = '".$fullUserName."'";
+	$userPrefQuery = "SELECT * FROM ".$dbname.".users WHERE userID = '".$fullUserName."'";
 	$userResult = mysqli_query($connection, $userPrefQuery);
 	if($userResult){
 	while($row = mysqli_fetch_assoc($userResult)){
@@ -81,20 +86,26 @@ if(isset($_COOKIE['user'.$file])){
 }
 
 
-$findAllLoggedInUsers = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE `userID` LIKE '" . $file . "%' AND `loggedIn` = 'TRUE'";
+$findAllLoggedInUsers = "SELECT * FROM ".$dbname.".users WHERE `userID` LIKE '" . $file . "%' AND `loggedIn` = 'TRUE'";
 $loggedInUsers = mysqli_query($connection, $findAllLoggedInUsers);
 $loggedInUserHTML='';
 if($loggedInUsers){
+	$numUsers = mysqli_num_rows($loggedInUsers);
+	$i = 1;
 	while($row = mysqli_fetch_assoc($loggedInUsers)){
-		//error_log($row['userID']);
 		$loggedInUserName = str_replace($file, "", $row['userID']);
-		$loggedInUserHTML=$loggedInUserHTML . '<br> '. $loggedInUserName;
-		//error_log($loggedInUserHTML);
+		if($i < $numUsers ){	
+			$loggedInUserHTML=$loggedInUserHTML . $loggedInUserName . '<br>';
 		}
+		else{
+			$loggedInUserHTML=$loggedInUserHTML . $loggedInUserName;//don't put a <br> on the last one
+		}
+		$i++;
 	}
+}
 
 
-$findUsers = "SELECT * FROM lrqf9g5qj2a9xm0i.users WHERE `userID` LIKE '".$file."Anonymous%'";
+$findUsers = "SELECT * FROM ".$dbname.".users WHERE `userID` LIKE '".$file."Anonymous%'";
 $userAnons = mysqli_query($connection, $findUsers);
 $testArray = $userAnons;
 if($userAnons){
@@ -116,6 +127,7 @@ mysqli_close($connection);
 </head>
 
 <body>
+<div id='noMobileOverlay'><u>Sorry!</u> <br>We do not currently support mobile devices. <br>If you're not on a mobile device, then make your browser larger, silly!</div>
 <div id='overlay'></div>
 <div id='enterName'>Please Enter Your Name. <span id='nameNote'>NOTE: this will be temporarily stored in our database.</span>
 <form method="post">
@@ -152,14 +164,6 @@ mysqli_close($connection);
 </div>
 
 
-
-
-
-
-
-
-
-
 <div id='bottomOfPage'>
 <div id="topSpacer"></div>
 <div id="meetSomeone">
@@ -175,7 +179,7 @@ Enter your code here:</span>
 
 </div>
 
-
+<div id='topRow'>
 <div id="coloring">
 <?php 
 //error_log("The selected Color is (line 186):" . $color);
@@ -206,8 +210,8 @@ foreach($syntaxArray as $name => $displayName) {
 ?>
 
 </select></div>
-<div id="status">Status: ready</div>
-
+<div id="status">Status: <span class='ready'>ready</span></div>
+</div>
 
 <div id='mainContainer'>
 <div id='showChat'>SHOW CHAT</div>
@@ -216,10 +220,8 @@ foreach($syntaxArray as $name => $displayName) {
 <code contenteditable="true" id="theCodeCode" class='language-markup'><?php 
 // Print the body of the result by indexing into the result object.
 echo htmlspecialchars($text); 
-?></code>
-</pre>
-</div>
-<div id="sidebar"><div id='hideChat'>HIDE CHAT</div><div id='currentUserList'><span id='currentUsersTitle'>Current Users:</span><?php echo($loggedInUserHTML); ?></div><div id='chatContainer'><div id='chatText'></div><div id='chatInputWrapper'><div id='chatTextInput' contenteditable="true"></div><div id='chatSubmit'>ENTER</div><div style="clear:both"></div></div></div>
+?></code></pre></div>
+<div id="sidebar"><div id='hideChat'>HIDE CHAT</div><div id='currentUserSidebar'><span id='currentUsersTitle'>Current Users:</span><div id='currentUserList'><?php echo($loggedInUserHTML); ?></div></div><div id='chatContainer'><div id='chatText'></div><div id='chatInputWrapper'><div id='chatTextInput' contenteditable="true"></div><div id='chatSubmit'>ENTER</div><div style="clear:both"></div></div></div>
 </div>
 </div>
 <div id="test" style="clear:both"></div>
@@ -228,6 +230,7 @@ echo htmlspecialchars($text);
 <script src="js/changeColor.js"></script>
 <script src="js/enterName.js"></script>
 <script src="js/changeLanguage.js"></script>
+<script src="js/resizePage.js"></script>
 <script src="js/prism.js"></script>
 <div id='footer'>Footer info | &copy; L. Kubie</div>
 </body>

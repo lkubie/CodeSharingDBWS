@@ -136,9 +136,23 @@ $(document).ready(function() {
 			//console.log('trying to add user');
 			if(incomingData.add == 1){
 				currentUserListHTML = $('#currentUserList').html();
-				newUserListHTML = currentUserListHTML + '<br>' + incomingData.username;
-				$('#currentUserList').html(newUserListHTML);
-				
+				var allArrayUserList = currentUserListHTML.split("<br>");
+				allArrayUserList.push(incomingData.username);
+				allArrayUserList.sort(function (a, b){return a.toLowerCase().localeCompare(b.toLowerCase());}); //sort list alphabetically and ignore case
+				var arrayLength = allArrayUserList.length -1;
+				var finalUserListHTML = '';
+				for (var i = 0; i <= arrayLength; i++){
+					if (i ===arrayLength){
+					finalUserListHTML += allArrayUserList[i];//don't add a br at the end.
+					}
+					else{finalUserListHTML += allArrayUserList[i] + "<br>";}
+				}
+				//console.log(finalUserListHTML);
+				$('#currentUserList').html(finalUserListHTML); 
+		
+		
+		
+		
 			}
 			else if(incomingData.add == 0){
 				currentUserListHTML = $('#currentUserList').html();
@@ -151,7 +165,7 @@ $(document).ready(function() {
 		else if (incomingData.type ==='chat'){
 			var oldChatHTML = $('#chatText').html();
 			var sendingUser = incomingData.user;
-			console.log(sendingUser);
+			//console.log(sendingUser);
 			var newChatString = '';
 			var dt = new Date();
 			var utcDate = dt.toUTCString();
@@ -256,7 +270,7 @@ $(document).ready(function() {
 			
 			
 			var oldChatHTML = $('#chatText').html();
-			console.log(sendingUser);
+			//console.log(sendingUser);
 			var newChatString = '';
 			var dt = new Date();
 			var utcDate = dt.toUTCString();

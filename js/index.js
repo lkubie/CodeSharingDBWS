@@ -37,7 +37,7 @@ $(document).ready(function(){
 				var fullResponce = $(data);
 				var boolString = fullResponce[0]['textContent'];
 				if(boolString == 'false'){
-					console.log('Does not Exists');
+					//console.log('Does not Exists');
 					$('#error').text('Sorry! That file does not exist!');
 					
 					}

@@ -17,6 +17,12 @@
 	    -webkit-margin-start: 0px;
 	    -webkit-margin-end: 0px;
 	}
+#footer {
+	clear: both;
+	text-align: center;
+	padding: 5%;
+	margin-top: 50px;
+}
 body{
 margin:0px;
 padding:0px;	
@@ -82,8 +88,11 @@ ul, li {
 	vertical-align: middle;
 	}
 .nav-button {
+	min-width:130px;
+	width:40%;
 	display: inline-block;
-	padding: 12px 20px;
+	padding: 5% 2%;
+	text-align:center;
 }
 
 #createNew{
@@ -144,3 +153,43 @@ ul, li {
 	clear: both;
 	color: #dd7373;/*pink*/
 }
+#noMobileOverlay{
+	background-color:#333333;
+	display:none;
+	padding:2%;
+	font-size:2.5em;
+	font-weight:bold;
+}
+@media screen and (max-width: 1000px){
+	#headerFileInfo{
+	padding-left:0px;
+	width: 100%;
+
+	
+	
+	}
+	
+	}
+@media screen and (max-width: 767px) and (orientation: landscape){
+	#noMobileOverlay{
+		display:block;
+		position:absolute;
+		width:100%;
+		height:96%;
+		z-index: 200000000;
+		}
+	
+	}
+@media screen and (max-width: 767px) and (orientation: portrait){
+	#noMobileOverlay{
+		display:block;
+		position:absolute;
+		width:100%;
+		height:96%;
+		z-index: 2000000;
+		}
+	
+	}
+
+
+

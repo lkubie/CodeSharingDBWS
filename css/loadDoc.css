@@ -32,6 +32,7 @@ body {
 #chatText {
 	height: 250px;
 	overflow-y: scroll;
+	overflow-wrap:break-word;
 	background-color: #d1d1d1; /*light grey*/
 	color: #333333;
 	font-size: 0.7em;
@@ -39,7 +40,7 @@ body {
 }
 #chatTextInput {
 	overflow-y: scroll;
-	overflow-x: hidden;
+	overflow-wrap:break-word;
 	font-size: 0.9em;
 	float: left;
 	width: 75%;
@@ -146,8 +147,8 @@ body {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	padding-left: 24px;
-	width: 100%;
+	padding: 0% 2% 2% 2%;
+	width: 96%;
 }
 #usersName{
 	display:inline-block;
@@ -159,19 +160,19 @@ body {
 	text-decoration: underline;
 	cursor: pointer;
 }
+
 select {
 	font-family: quicksand;
-	color:#d1d1d1;
+	color:#333333;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	padding-left: 15px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	border-color: #00a9bc;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px; 
 	background: url(http://localhost/codesharingDBWS/img/dropdown-mod.png) no-repeat 100% 0;
-	background-color: #00a9bc;
-	height: 25px;
+	background-color: #d1d1d1;
+	height: 20px;
 	overflow: hidden;
 	width: 120px;
 }
@@ -192,7 +193,7 @@ select:focus {
 }
 #bottomOfPage {
 	
-	padding: 0% 2% 2% 2%;
+	/*padding: 0% 2% 2% 2%;*/
 }
 #title{
 	float:left;
@@ -217,6 +218,11 @@ select:focus {
 #fileNameSpan {
 	text-decoration: underline;
 	cursor: pointer;
+}
+#topRow{
+	float:left;
+	padding-top:30px;
+	padding-bottom:30px;
 }
 #status {
 	float: left;
@@ -256,10 +262,13 @@ select:focus {
 	right:15px;
 	top:15px;}
 #currentUserList {
+	padding-top:10px;
 	margin-bottom: 50px;
 }
 #theCode {
+	max-height:700px;
 	overflow:scroll;
+	scrollbar-base-color:#333333;
 	/*width: 130ch;*/
 	/*display: inline;*/
 	tab-size: 4;
@@ -269,6 +278,22 @@ select:focus {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
 }
+#theCode::-webkit-scrollbar{
+	width:10px;
+	height:10px;
+	
+}
+#theCode::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px #333333;*/
+}
+#theCode::-webkit-scrollbar-thumb {
+  background-color: #d1d1d1;
+  -webkit-box-shadow: inset 0 0 6px #333333;
+  /*outline: 1px solid #d1d1d1;*/
+}
+#theCode::-webkit-scrollbar-corner{
+	background-color:transparent;
+	}
 #theCodeCode:focus {
 	outline: 0px solid transparent;
 }
@@ -276,3 +301,41 @@ select:focus {
 	outline: 0px solid transparent;
 	display: block;
 }
+.ready{
+	color:#00a9bc;
+}
+.notReady{
+	color:#dd7373;
+}
+
+@media screen and (max-width: 1000px){
+	/*
+	Need to put the Chat Enter under at this point
+	*/
+	#chatSubmit {
+	font-size:0.8em;
+	float: none;
+	
+	width: 20%;
+	
+	height: 30px;
+	line-height: 30px;
+	margin-left: 78%;
+	text-align: center;
+	margin-top: 5px;
+}
+#chatTextInput{
+	float:none;
+	width:98%}
+#currentUserSidebar{
+
+	top:40px;}
+	}
+@media screen and (max-width: 878px) and (orientation: landscape){
+	
+	
+	}
+@media screen and (max-width: 878px) and (orientation: portrait){
+	
+	
+	}

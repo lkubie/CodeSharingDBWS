@@ -7,11 +7,21 @@ if (isset($_POST['file'])){
 else{
 	$file = 'test3';
 	}
- $dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+//AWS for Heroku
+$dbhost = "sulnwdk5uwjw1r2k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $dbuser = "k22qr254pzknzhib";
 $dbpass = "rwzwygqrxexbnl6x";
 $dbname = "lrqf9g5qj2a9xm0i";
-$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, 3306);
+$port = 3306;
+/*
+//Localhost
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "root";
+$dbname = "CodeSharing";
+$port = 3308;*/
+
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname, $port);
 // $connection = mysqli_connect("localhost", "root", "root", "CodeSharing");
 if (!$connection) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -20,7 +30,7 @@ if (!$connection) {
     exit;
 }
 
-$sql = "SELECT * FROM lrqf9g5qj2a9xm0i.currentFiles WHERE filename = '".$file."'";
+$sql = "SELECT * FROM ".$dbname.".currentFiles WHERE filename = '".$file."'";
 $result = mysqli_query($connection, $sql);
 $row_cnt = mysqli_num_rows($result);
 $exists = 'false';

@@ -1,5 +1,6 @@
 // JavaScript Document
 $(document).ready(function() {
+	
 	var conn = new WebSocket('ws://localhost:8080');
 	//var conn = new WebSocket('ws://75a9933c.ngrok.io'); 
 	var name = '';
@@ -35,21 +36,38 @@ $(document).ready(function() {
 		var name = $('#usersNameName').text();
 		var cookieUserNew = $.cookie('user'+fileName); // => "the_value"
 		var fullUserName = fileName + name;
-		if(cookieUserNew == undefined){//if the cookie user is NOT set
-			//DO AN AJAX TO DELETE THIS PERSON FROM THE DB!
-			
-			
-			$.post('removeUser.php', {user: fullUserName});
-			dataObject = {
-						type : 'user', //I have this so I can seperate code, user and chat
-						add: 0,
-						username: name
-					};
-					conn.send(JSON.stringify(dataObject));
-		}
+		if(cookieUserNew === undefined){//if the cookie user is NOT set
+		//DO AN AJAX TO DELETE THIS PERSON FROM THE DB!
+		$.post('removeUser.php', {user: fullUserName});
+			}
 		else{//if the user has a cookie, but is leaving...
 			$.post('logoutUser.php', {user: fullUserName});
 			}
+		dataObject = {
+			type : 'user', //I have this so I can seperate code, user and chat
+			add: 0,
+			username: name
+					};
+		conn.send(JSON.stringify(dataObject));//send that you 'left' to all users
+		var currentUserListHTML = $('#currentUserList').html();
+		var allArrayUserList = currentUserListHTML.split("<br>");
+		var indexOfName = allArrayUserList.indexOf(name);
+		//console.log('The index of the name is: ' + indexOfName);
+		if (indexOfName > -1) {
+   			 allArrayUserList.splice(indexOfName, 1);
+		}
+		allArrayUserList.sort(function (a, b){return a.toLowerCase().localeCompare(b.toLowerCase());}); //sort list alphabetically and ignore case
+		//console.log(allArrayUserList);
+		var arrayLength = allArrayUserList.length -1;
+		var finalUserListHTML = '';
+		for (var i = 0; i <= arrayLength; i++){
+			if (i ===arrayLength){
+					finalUserListHTML += allArrayUserList[i];//don't add a br at the end.
+					}
+					else{finalUserListHTML += allArrayUserList[i] + "<br>";}
+			}
+		//console.log(finalUserListHTML);
+		$('#currentUserList').html(finalUserListHTML); 
 		$('#enterName').toggle();
 		$('#overlay').toggle();
 		$.removeCookie('user'+fileName);
@@ -70,27 +88,21 @@ $(document).ready(function() {
 		var fullUserName = fileName + name;
 		//set cookie if checkbox is set
 		//ajax here and below only happens if that name is not in use
-		console.log(desireCookie);
+		//console.log(desireCookie);
 		$.post('checkName.php', {userName : fullUserName, cookie : desireCookie}, function(data){
 			//data is if username exists
-			if(data == 'false'){//if it does not exist
+			if(data === 'false'){//if it does not exist
 				if(wantCookie){
 					$.cookie('user'+fileName, fullUserName, {expires: 30});
 					}
-				//put yourself on the 'working on' list
-				var currentUserListHTML = $('#currentUserList').html();
-				var newUserListHTML = currentUserListHTML + '<br>' + name;
-				$('#currentUserList').html(newUserListHTML);
+				
 				//put the fact that you entered into your chat... not sure I want this, but...
 				var oldChatHTML = $('#chatText').html();
 				var newChatString = '';
 				var dt = new Date();
 				var utcDate = dt.toUTCString();
 				newChatString = "<i>" + name + " has entered (" + utcDate + ")</i><br>";
-				$('#chatText').html(oldChatHTML + newChatString);
-				
-				
-				
+				//$('#chatText').html(oldChatHTML + newChatString); //dont' need this because socket does it
 				var str = "Now working as: <span id='usersNameName'>" + name + "</span>";
 				$('#usersName').html(str);
 				$('#editName').html('Change?');
@@ -123,7 +135,7 @@ $(document).ready(function() {
 		
 		var cookieUserNew = $.cookie('user'+fileName); // => "the_value"
 		var fullUserName = fileName + name;
-		if(cookieUserNew == undefined){//if the cookie user is NOT set
+		if(cookieUserNew === undefined){//if the cookie user is NOT set
 			//DO AN AJAX TO DELETE THIS PERSON FROM THE DB!
 			
 			
