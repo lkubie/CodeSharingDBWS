@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	
 	//var conn = new WebSocket('ws://localhost:8080');
-	var conn = new WebSocket('ws://salty-dusk-53545.herokuapp.com:8080');
+	var conn = new WebSocket('wss://salty-dusk-53545.herokuapp.com:8080');
 	//var conn = new WebSocket('ws://75a9933c.ngrok.io'); 
 	var name = '';
 	var fileName = $('#fileNameSpan').text();
