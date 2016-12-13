@@ -117,7 +117,8 @@ $(document).ready(function() {
 	var incomingLength = 0;
 	var lengthDiffrence = 0;
 	var incomingKeystroke;
-	var conn = new WebSocket('ws://localhost:8080');
+	//var conn = new WebSocket('ws://localhost:8080');
+	var conn = new WebSocket('salty-dusk-53545.herokuapp.com:8080');
 	//var conn = new WebSocket('ws://75a9933c.ngrok.io'); 
 	conn.onopen = function(e) {
 		console.log("Connection established!");
